@@ -1,0 +1,12 @@
+.vs/
+.vscode/
+**/bin/
+**/obj/
+**/wwwroot/
+*.csproj.user
+#**/appsettings.Development.json
+publish/
+
+# Exclude git history and configuration.
+.git/
+#.gitignore
