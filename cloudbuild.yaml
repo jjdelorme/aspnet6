@@ -26,6 +26,7 @@ steps:
   - 'managed'
   - '--allow-unauthenticated'
   - '--update-env-vars=ASPNETCORE_ENVIRONMENT=Development'
+  - '--update-env-vars=ASPNETCORE_URLS=http://0.0.0.0:8080'  
 
 images:
 - gcr.io/$PROJECT_ID/aspnet6:$BUILD_ID
