@@ -1,8 +1,9 @@
 using System;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
-await using var app = builder.Build();
+var app = builder.Build();
 
 app.MapGet("/", (Func<string>)(() => "Hello World!"));
 app.MapGet("/{name?}", (Func<string, string>)PrintHello);

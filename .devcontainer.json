@@ -1,4 +1,5 @@
 {
-    "image": "mcr.microsoft.com/dotnet/nightly/sdk:6.0",
+    "build": { "dockerfile": "Dockerfile" },
+    "extensions": ["ms-dotnettools.csharp"],
     "forwardPorts": [8080]
 }
