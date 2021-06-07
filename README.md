@@ -23,9 +23,12 @@ PROJECT_ID=`gcloud config list --format 'value(core.project)' 2>/dev/null`
 
 PROJECT_NUMBER=`gcloud projects describe $PROJECT_ID --format='value(projectNumber)'`
 
-gcloud projects add-iam-policy-binding $PROJECT_ID --member "serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com" --role roles/run.admin
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member "serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com" \
+    --role roles/run.admin
 
-gcloud iam service-accounts add-iam-policy-binding $PROJECT_NUMBER-compute@developer.gserviceaccount.com --member "serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com" --role "roles/iam.serviceAccountUser"    
-
-gcloud projects add-iam-policy-binding $PROJECT_ID --condition=expression='resource.name.startsWith("projects/$PROJECT_NUMBER/secrets/connectionstrings")',title="Access connection string secret" --role=roles/secretmanager.secretAccessor --member=serviceAccount:$PROJECT_NUMBER-compute@developer.gserviceaccount.com
+gcloud iam service-accounts add-iam-policy-binding \
+    $PROJECT_NUMBER-compute@developer.gserviceaccount.com \
+    --member "serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com" \
+    --role "roles/iam.serviceAccountUser"    
 ```
